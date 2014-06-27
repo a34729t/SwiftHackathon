@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SwiftMirror" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-3z-Mt2">
+                                <rect key="frame" x="0.0" y="50" width="480" height="369"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VtP-rx-wUQ">
+                                <rect key="frame" x="0.0" y="436" width="480" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="save" id="S59-O7-PPL"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="srF-Tf-smw"/>
+                                    <barButtonItem systemItem="camera" id="kNu-zG-d8r">
+                                        <connections>
+                                            <action selector="camera:" destination="vXZ-lx-hvc" id="GAi-lM-Pcf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mm5-js-hQg"/>
+                                    <barButtonItem title="Flair!" id="SCV-nQ-qBV">
+                                        <connections>
+                                            <action selector="addFlair:" destination="vXZ-lx-hvc" id="PJ8-eq-yOQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0dW-3z-Mt2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1nB-3o-8YM"/>
+                            <constraint firstItem="0dW-3z-Mt2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="9DI-Yk-9iX"/>
+                            <constraint firstAttribute="bottom" secondItem="VtP-rx-wUQ" secondAttribute="bottom" id="L7U-eb-YEz"/>
+                            <constraint firstItem="VtP-rx-wUQ" firstAttribute="trailing" secondItem="0dW-3z-Mt2" secondAttribute="trailing" id="PXQ-c5-fbE"/>
+                            <constraint firstAttribute="trailing" secondItem="0dW-3z-Mt2" secondAttribute="trailing" id="WIq-cw-ZsD"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="0dW-3z-Mt2" secondAttribute="bottom" constant="61" id="fM6-KY-81F"/>
+                            <constraint firstItem="VtP-rx-wUQ" firstAttribute="leading" secondItem="0dW-3z-Mt2" secondAttribute="leading" id="jFd-Lt-bdr"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="0dW-3z-Mt2" id="EFW-QK-o5L"/>
+                        <outlet property="saveButton" destination="S59-O7-PPL" id="BHz-gB-b0T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
