@@ -7,7 +7,7 @@ Projects from Twitter's Swift Hackathon (6/27/2014)
 
 Add your project in a subfolder, and then send me a pull request to add your project, or change this readme or whatever else you want to do.
 
-### Help!
+### Non-Hackathon Code Which Might Help You...
 
 If you are stuck or need new ideas, look at these other open-source projects:
 
