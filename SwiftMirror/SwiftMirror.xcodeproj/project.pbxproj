@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF2D90A4195DFCE600CEC682 /* FlairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D90A3195DFCE600CEC682 /* FlairView.swift */; };
+		FF2D90A8195E06C500CEC682 /* FlairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D90A7195E06C500CEC682 /* FlairManager.swift */; };
 		FFAC1871195DDCC300CA544E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC1870195DDCC300CA544E /* AppDelegate.swift */; };
 		FFAC1873195DDCC300CA544E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC1872195DDCC300CA544E /* ViewController.swift */; };
 		FFAC1876195DDCC300CA544E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFAC1874195DDCC300CA544E /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF2D90A3195DFCE600CEC682 /* FlairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlairView.swift; sourceTree = "<group>"; };
+		FF2D90A7195E06C500CEC682 /* FlairManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlairManager.swift; path = ../FlairManager.swift; sourceTree = "<group>"; };
 		FFAC186B195DDCC300CA544E /* SwiftMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAC186F195DDCC300CA544E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFAC1870195DDCC300CA544E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,8 +79,10 @@
 		FFAC186D195DDCC300CA544E /* SwiftMirror */ = {
 			isa = PBXGroup;
 			children = (
+				FF2D90A7195E06C500CEC682 /* FlairManager.swift */,
 				FFAC1870195DDCC300CA544E /* AppDelegate.swift */,
 				FFAC1872195DDCC300CA544E /* ViewController.swift */,
+				FF2D90A3195DFCE600CEC682 /* FlairView.swift */,
 				FFAC1874195DDCC300CA544E /* Main.storyboard */,
 				FFAC1877195DDCC300CA544E /* Images.xcassets */,
 				FFAC186E195DDCC300CA544E /* Supporting Files */,
@@ -209,7 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2D90A4195DFCE600CEC682 /* FlairView.swift in Sources */,
 				FFAC1873195DDCC300CA544E /* ViewController.swift in Sources */,
+				FF2D90A8195E06C500CEC682 /* FlairManager.swift in Sources */,
 				FFAC1871195DDCC300CA544E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +410,7 @@
 				FFAC1889195DDCC300CA544E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFAC188A195DDCC300CA544E /* Build configuration list for PBXNativeTarget "SwiftMirrorTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +419,7 @@
 				FFAC188C195DDCC300CA544E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

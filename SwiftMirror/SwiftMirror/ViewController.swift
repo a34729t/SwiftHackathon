@@ -13,6 +13,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var imageView: UIImageView
     @IBOutlet var saveButton: UIBarButtonItem
 
+    var flair: FlairView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,12 +22,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func takePicture(sender: AnyObject?) -> () {
-        let picker = UIImagePickerController()
-        picker.sourceType = .Camera
-        picker.cameraDevice = .Front
     }
 
     @IBAction func camera(sender: AnyObject) {
@@ -47,6 +43,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let features = detector.featuresInImage(aCIImage)
             println("features: \(features)")
         }
+        if let someFlair = flair {
+            someFlair.removeFromSuperview()
+        }
+        // find center
+        let centerX = imageView.frame.size.width / CGFloat(2.0)
+        let centerY = imageView.frame.size.height / CGFloat(2.0)
+        let flairImage = sharedFlairManager.getAnImage()
+        let width = CGFloat(100.0)
+        let widthScale = flairImage.size.width / width
+        let height = flairImage.size.height / widthScale
+        let originX = centerX - width / CGFloat(2.0)
+        let originY = centerY - (height / CGFloat(2.0))
+        let imageFrame = CGRectMake(originX, originY, width, height)
+
+        flair = FlairView(frame:imageFrame)
+        flair!.image = flairImage
+        imageView.addSubview(flair)
     }
 
     func imagePickerController(controller:UIImagePickerController, didFinishPickingImage image:UIImage, editingInfo:NSDictionary) {
