@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Accounts
+import Social
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                             
@@ -22,6 +24,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func composeFinalImage() -> UIImage? {
+        UIGraphicsBeginImageContext(self.imageView.frame.size)
+        self.imageView.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let contextImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        // for testing 
+        return contextImage
     }
 
     @IBAction func camera(sender: AnyObject) {
@@ -41,7 +52,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let aCIImage = CIImage(image: anImage)
             let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: nil)
             let features = detector.featuresInImage(aCIImage)
-            println("features: \(features)")
+            println("facial features found: \(features)")
         }
         if let someFlair = flair {
             someFlair.removeFromSuperview()
@@ -60,6 +71,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         flair = FlairView(frame:imageFrame)
         flair!.image = flairImage
         imageView.addSubview(flair)
+    }
+
+    @IBAction func save(sender: AnyObject) {
+        if let composedImage = composeFinalImage() {
+            let accountStore = ACAccountStore()
+            let twitterAccountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
+            accountStore.requestAccessToAccountsWithType(twitterAccountType) {
+                granted, error in
+                if granted {
+                    println("booyah")
+                    let accounts = accountStore.accountsWithAccountType(twitterAccountType)
+                    let urlString = "https://api.twitter.com/1.1/statuses/update_with_media.json"
+
+                } else {
+                    println("Oh noes! Save to library instead")
+                    UIImageWriteToSavedPhotosAlbum(composedImage, nil, nil, nil)
+                }
+            }
+        } else {
+            UIAlertView(title: "Oops", message: "Unable to compose the image", delegate: nil, cancelButtonTitle: "OK")
+        }
     }
 
     func imagePickerController(controller:UIImagePickerController, didFinishPickingImage image:UIImage, editingInfo:NSDictionary) {

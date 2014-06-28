@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VtP-rx-wUQ">
                                 <rect key="frame" x="0.0" y="436" width="480" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="save" id="S59-O7-PPL"/>
+                                    <barButtonItem systemItem="save" id="S59-O7-PPL">
+                                        <connections>
+                                            <action selector="save:" destination="vXZ-lx-hvc" id="7aX-AD-cjv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="srF-Tf-smw"/>
                                     <barButtonItem systemItem="camera" id="kNu-zG-d8r">
                                         <connections>
@@ -52,7 +57,6 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="0dW-3z-Mt2" id="EFW-QK-o5L"/>
-                        <outlet property="saveButton" destination="S59-O7-PPL" id="BHz-gB-b0T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
