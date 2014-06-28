@@ -60,6 +60,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // find center
         let centerX = imageView.frame.size.width / CGFloat(2.0)
         let centerY = imageView.frame.size.height / CGFloat(2.0)
+
         let flairImage = sharedFlairManager.getAnImage()
         let width = CGFloat(100.0)
         let widthScale = flairImage.size.width / width
@@ -83,9 +84,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     println("booyah")
                     let accounts = accountStore.accountsWithAccountType(twitterAccountType)
                     let urlString = "https://api.twitter.com/1.1/statuses/update_with_media.json"
+                    var params:NSDictionary = ["status":"Hello from #SwiftMirror"]
+                    let req = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .PUT, URL: NSURL(string: urlString), parameters: params)
+                    let imageData = UIImageJPEGRepresentation(composedImage, 1.0)
 
+                    let requestHandler:SLRequestHandler = { data, res, error in
+                        if res.statusCode > 200 && res.statusCode < 300 {
+                            println("Woot")
+                            let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as? NSDictionary
+                            println("Tweet saved with tweet id: \(responseDict.description)")
+                        } else {
+                            println("error sedning tweet: \(error)")
+                        }
+                    }
+
+                    req.addMultipartData(imageData, withName: "media[]", type: "image/jpeg", filename: "swit_mirror.jpeg")
+                    req.account = accounts[0] as ACAccount
+                    req.performRequestWithHandler(requestHandler)
                 } else {
-                    println("Oh noes! Save to library instead")
+                    println("Can't access account! Save to library instead")
                     UIImageWriteToSavedPhotosAlbum(composedImage, nil, nil, nil)
                 }
             }
