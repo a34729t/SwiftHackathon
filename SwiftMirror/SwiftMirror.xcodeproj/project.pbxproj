@@ -164,7 +164,7 @@
 				TargetAttributes = {
 					FFAC186A195DDCC300CA544E = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 9YG77X724H;
+						DevelopmentTeam = PKS229JK2G;
 					};
 					FFAC187C195DDCC300CA544E = {
 						CreatedOnToolsVersion = 6.0;

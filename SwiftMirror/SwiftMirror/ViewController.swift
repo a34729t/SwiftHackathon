@@ -85,20 +85,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     let accounts = accountStore.accountsWithAccountType(twitterAccountType)
                     let urlString = "https://api.twitter.com/1.1/statuses/update_with_media.json"
                     var params:NSDictionary = ["status":"Hello from #SwiftMirror"]
-                    let req = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .PUT, URL: NSURL(string: urlString), parameters: params)
-                    let imageData = UIImageJPEGRepresentation(composedImage, 1.0)
-
+                    let req = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: NSURL(string: urlString), parameters: params)
+                    
                     let requestHandler:SLRequestHandler = { data, res, error in
-                        if res.statusCode > 200 && res.statusCode < 300 {
+                        if res.statusCode > 199 && res.statusCode < 300 {
                             println("Woot")
                             let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as? NSDictionary
                             println("Tweet saved with tweet id: \(responseDict.description)")
                         } else {
-                            println("error sedning tweet: \(error)")
+                            println("error sedning tweet - \(res.statusCode): \(error)")
                         }
                     }
-
-                    req.addMultipartData(imageData, withName: "media[]", type: "image/jpeg", filename: "swit_mirror.jpeg")
+                    
+                    let imageData = UIImageJPEGRepresentation(composedImage, 1.0)
+                    req.addMultipartData(imageData, withName: "media[]", type: "image/jpeg", filename: "image.jpeg")
                     req.account = accounts[0] as ACAccount
                     req.performRequestWithHandler(requestHandler)
                 } else {
