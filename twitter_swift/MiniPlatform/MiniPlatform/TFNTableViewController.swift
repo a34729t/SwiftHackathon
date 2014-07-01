@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFactory : RowAdapterFactory, StreamType : Stream> : UITableViewController {
-    @lazy var stream = StreamType()
-    @lazy var rowAdapters = RowAdapterFactory().adapters()
-    @lazy var sectionAdapter = SectionAdapterType()
+class TFNTableViewController : UITableViewController {
+    var stream : Stream?
+    var rowAdapters : Dictionary<String,RowAdapter>?
+    var sectionAdapter : SectionAdapter?
     var minID : Int64?
     var maxID : Int64?
     
@@ -49,8 +49,8 @@ class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFact
         if sections?.count > indexPath.section && sections![indexPath.section].count > indexPath.row {
             let item : Identifiable = sections![indexPath.section][indexPath.row]
             let itemClass = NSString(CString: class_getName((item as AnyObject).dynamicType))
-            if rowAdapters[itemClass].getLogicValue() {
-                cell = rowAdapters[itemClass]!.cellForItem(item,tableView)
+            if rowAdapters![itemClass].getLogicValue() {
+                cell = rowAdapters![itemClass]!.cellForItem(item,tableView)
             }
         }
 
@@ -59,13 +59,13 @@ class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFact
 
     func update()
     {
-        self.sections = self.sectionAdapter.sectionArray(self.stream.streamObjects)
+        self.sections = self.sectionAdapter?.sectionArray(self.stream?.streamObjects)
     }
     
     func loadTop()
     {
         
-        stream.loadTop() {
+        stream?.loadTop() {
             (results : AnyObject?, error : NSError?) in
             self.update()
         }

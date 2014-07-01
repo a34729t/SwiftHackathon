@@ -9,8 +9,20 @@
 import MiniPlatform
 
 class HomeTimelineSectionAdapter : SectionAdapter {
-    override func sectionArray(Array<Identifiable>?) -> Array<Identifiable>?
+    override func sectionArray(inArray: Array<Identifiable>?) -> Array<Array<Identifiable>>?
     {
-        
+        if inArray.getLogicValue() == false || inArray?.count == 0 {
+            // Empty, just return nothing
+            return [[]];
+        }
+        if inArray![0].ID < 0 {
+            // Error, etc: just pass it through
+            return [inArray!]
+        }
+        var sections = Identifiable[]()
+        sections.append(PTRItem())
+        sections.extend(inArray!)
+        sections.append(FooterItem())
+        return [sections]
     }
 }

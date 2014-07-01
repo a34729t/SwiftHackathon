@@ -7,7 +7,7 @@
 //
 
 class RowAdapterFactory : NSObject {
-    func adapters() -> Dictionary<String,RowAdapter>?
+    func adapters() -> Dictionary<String,RowAdapter>
     {
         return Dictionary<String,RowAdapter>()
     }

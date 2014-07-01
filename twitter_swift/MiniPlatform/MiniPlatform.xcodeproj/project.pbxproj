@@ -24,6 +24,7 @@
 		D6ADD5F21954D34A0055E11F /* TwitterDeepLinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADD5F11954D34A0055E11F /* TwitterDeepLinkable.swift */; };
 		D6B755731959BCEB00E0417B /* TFNTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B755721959BCEB00E0417B /* TFNTableViewController.swift */; };
 		D6BE3BBD1957A48000246307 /* HomeTimelineStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE3BBC1957A48000246307 /* HomeTimelineStream.swift */; };
+		D6C1BD6C196204A9008E2DE2 /* SpecialItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1BD6B196204A9008E2DE2 /* SpecialItems.swift */; };
 		D6C22DBC19452A1100F719DE /* HMacEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C22DBA19452A1100F719DE /* HMacEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6C22DBD19452A1100F719DE /* HMacEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C22DBB19452A1100F719DE /* HMacEncoder.m */; };
 		D6D0FD661958E98B00D8DE48 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D0FD651958E98B00D8DE48 /* Identifiable.swift */; };
@@ -60,6 +61,7 @@
 		D6ADD5F11954D34A0055E11F /* TwitterDeepLinkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterDeepLinkable.swift; path = MiniPlatform/TwitterDeepLinkable.swift; sourceTree = "<group>"; };
 		D6B755721959BCEB00E0417B /* TFNTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFNTableViewController.swift; sourceTree = "<group>"; };
 		D6BE3BBC1957A48000246307 /* HomeTimelineStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimelineStream.swift; sourceTree = "<group>"; };
+		D6C1BD6B196204A9008E2DE2 /* SpecialItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialItems.swift; sourceTree = "<group>"; };
 		D6C22DB9194527A900F719DE /* twitter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = twitter.playground; sourceTree = "<group>"; };
 		D6C22DBA19452A1100F719DE /* HMacEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMacEncoder.h; sourceTree = "<group>"; };
 		D6C22DBB19452A1100F719DE /* HMacEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMacEncoder.m; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				D6251A2119562AA100CE7E11 /* Place.swift */,
 				D6AADDC4194F7C3200BBF226 /* TFNTwitter.swift */,
 				D6ADD5F11954D34A0055E11F /* TwitterDeepLinkable.swift */,
+				D6C1BD6B196204A9008E2DE2 /* SpecialItems.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -295,6 +298,7 @@
 				D6AADDC5194F7C3200BBF226 /* TFNTwitter.swift in Sources */,
 				9CDF2A98195F270500CE2DD5 /* RowAdapterFactory.swift in Sources */,
 				D6A1E8A7195A4E4000379944 /* SectionAdapter.swift in Sources */,
+				D6C1BD6C196204A9008E2DE2 /* SpecialItems.swift in Sources */,
 				D6A0CF3819429AF800436D50 /* TwitterAPI.swift in Sources */,
 				D6251A1C195629AD00CE7E11 /* User.swift in Sources */,
 				D6251A1E195629B900CE7E11 /* Tweet.swift in Sources */,
