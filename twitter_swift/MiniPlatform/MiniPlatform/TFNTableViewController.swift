@@ -27,6 +27,19 @@ class TFNTableViewController : UITableViewController {
     {
         // TODO: install default row adapters, e.g. String
         super.viewDidLoad()
+        self.refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        self.refreshControl?.beginRefreshing()
+        self.loadTop() {
+            (results : AnyObject?, error : NSError?) in
+            if let control = self.refreshControl {
+                control.endRefreshing()
+            }
+        }
+    }
+
+    func refresh(sender: AnyObject)
+    {
+        self.loadTop()
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView!) -> Int
@@ -61,15 +74,19 @@ class TFNTableViewController : UITableViewController {
     {
         self.sections = self.sectionAdapter?.sectionArray(self.stream?.streamObjects)
     }
-    
+
     func loadTop()
     {
-        
+        self.loadTop() {(results : AnyObject?, error : NSError?) in /* do nothing */}
+    }
+
+    func loadTop(completion: CompletionFunction)
+    {
         stream?.loadTop() {
             (results : AnyObject?, error : NSError?) in
             self.update()
+            completion(results: results, error: error)
         }
-        
     }
     
     override func viewWillAppear(animated: Bool)

@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="1551" y="944"/>
         </scene>
-        <!--Timeline View Controller - Timeline-->
+        <!--Timeline View Controller - Home Timeline-->
         <scene sceneID="ggb-UQ-7cc">
             <objects>
-                <tableViewController title="Timeline" id="vm6-Kb-ctH" customClass="TimelineViewController" customModule="twitter_swift" sceneMemberID="viewController">
+                <tableViewController title="Home Timeline" id="vm6-Kb-ctH" customClass="TimelineViewController" customModule="twitter_swift" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="22" sectionFooterHeight="22" id="MPf-jq-iKh">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,6 +224,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Timeline" image="first" id="q0J-Xk-LzT"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Cyh-Qq-Aec">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i7j-le-qiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="d5q-Vw-7gi"/>

@@ -22,9 +22,4 @@ class TimelineViewController : TFNTableViewController {
         self.rowAdapters = newRowAdapters
     }
 
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
-
 }
