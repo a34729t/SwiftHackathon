@@ -3,10 +3,11 @@
 import Cocoa
 import Foundation
 
-class testCell : NSCell {
+var t : Array<Int>?
+t = Int[]()
 
-}
+t?.append(5)
 
-var t : NSCell = testCell()
 
-var q = NSString(CString: class_getName(testCell))
+t.getLogicValue() == false || t?.count > 0
+

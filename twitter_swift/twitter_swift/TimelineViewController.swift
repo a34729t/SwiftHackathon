@@ -14,14 +14,12 @@ class TimelineViewController : TFNTableViewController {
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        stream = HomeTimelineStream()
+        self.stream = HomeTimelineStream()
+        self.sectionAdapter = HomeTimelineSectionAdapter()
         // Can't just say Tweet here since it'll be a mangled Swift name
-        self.rowAdapters[NSString(CString: class_getName(Tweet))] = StatusRowAdapter(reuseIdentifier: "StatusCell")
-    }
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
+        var newRowAdapters : Dictionary<String,RowAdapter> = RowAdapterFactory().adapters()
+        newRowAdapters[NSString(CString: class_getName(Tweet))] = StatusRowAdapter(reuseIdentifier: "StatusCell")
+        self.rowAdapters = newRowAdapters
     }
 
 }

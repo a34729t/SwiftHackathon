@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFactory : RowAdapterFactory, StreamType : Stream> : UITableViewController {
-    @lazy var stream = StreamType()
-    @lazy var rowAdapters = RowAdapterFactory().adapters()
-    @lazy var sectionAdapter = SectionAdapterType()
+class TFNTableViewController : UITableViewController {
+    var stream : Stream?
+    var rowAdapters : Dictionary<String,RowAdapter>?
+    var sectionAdapter : SectionAdapter?
     var minID : Int64?
     var maxID : Int64?
     
@@ -27,6 +27,19 @@ class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFact
     {
         // TODO: install default row adapters, e.g. String
         super.viewDidLoad()
+        self.refreshControl?.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        self.refreshControl?.beginRefreshing()
+        self.loadTop() {
+            (results : AnyObject?, error : NSError?) in
+            if let control = self.refreshControl {
+                control.endRefreshing()
+            }
+        }
+    }
+
+    func refresh(sender: AnyObject)
+    {
+        self.loadTop()
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView!) -> Int
@@ -49,8 +62,8 @@ class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFact
         if sections?.count > indexPath.section && sections![indexPath.section].count > indexPath.row {
             let item : Identifiable = sections![indexPath.section][indexPath.row]
             let itemClass = NSString(CString: class_getName((item as AnyObject).dynamicType))
-            if rowAdapters[itemClass].getLogicValue() {
-                cell = rowAdapters[itemClass]!.cellForItem(item,tableView)
+            if rowAdapters![itemClass].getLogicValue() {
+                cell = rowAdapters![itemClass]!.cellForItem(item,tableView)
             }
         }
 
@@ -59,17 +72,21 @@ class TFNTableViewController<SectionAdapterType : SectionAdapter, RowAdapterFact
 
     func update()
     {
-        self.sections = self.sectionAdapter.sectionArray(self.stream.streamObjects)
+        self.sections = self.sectionAdapter?.sectionArray(self.stream?.streamObjects)
     }
-    
+
     func loadTop()
     {
-        
-        stream.loadTop() {
+        self.loadTop() {(results : AnyObject?, error : NSError?) in /* do nothing */}
+    }
+
+    func loadTop(completion: CompletionFunction)
+    {
+        stream?.loadTop() {
             (results : AnyObject?, error : NSError?) in
             self.update()
+            completion(results: results, error: error)
         }
-        
     }
     
     override func viewWillAppear(animated: Bool)
